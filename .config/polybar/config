@@ -12,20 +12,16 @@ magenta     = #b48ead
 cyan        = #96b5b4
 white       = #c0c5ce
 
-# 75% background, 25% green
+# interpolated 3:1 background and green
 background-green = #49544F
 
-background-alt = #444
-foreground-alt = #555
-secondary = #e60053
-alert = #bd2c40
+[settings]
+screenchange-reload = true
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 30
 radius = 0.0
-fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -42,16 +38,9 @@ module-margin-right = 1
 font-0 = "FiraCode Nerd Font:style=Regular;2"
 
 modules-left = i3
-; modules-center = mpd
 modules-right = pulseaudio wlan battery date
 
-;wm-restack = bspwm
-wm-restack = i3
-;override-redirect = true
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
+; changes cursor on clickable elements
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -61,46 +50,29 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
 label-mode-padding = 2
-;label-mode-foreground = #000
 label-mode-background = ${colors.background-green}
 
-; focused = Active workspace on focused monitor
+; focused = active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-green}
 label-focused-underline= ${colors.green}
 label-focused-padding = 2
 
-; unfocused = Inactive workspace on any monitor
+; unfocused = inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 2
 
-; visible = Active workspace on unfocused monitor
+; visible = active workspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
+; urgent = workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.red}
 label-urgent-padding = 2
-
-; [module/mpd]
-; type = internal/mpd
-; format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-; icon-prev = 
-; icon-stop = 
-; icon-play = 
-; icon-pause = 
-; icon-next = 
-
-; label-song-maxlen = 25
-; label-song-ellipsis = true
 
 [module/wlan]
 type = internal/network
@@ -152,17 +124,3 @@ animation-discharging-2 =   %percentage%%
 animation-discharging-3 =   %percentage%%
 animation-discharging-4 =   %percentage%%
 animation-discharging-framerate = 1000
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
-; vim:ft=dosini
